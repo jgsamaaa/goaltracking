@@ -19,19 +19,23 @@ export type DayRecord = {
 export type WeekRecord = {
   weekStartISO: string; // Monday YYYY-MM-DD
   title: string;
+  deadlineISO?: string; // optional explicit deadline date
   tasks: Task[];
   status: "open" | "passed" | "failed";
   failReason?: string;
   closedAt?: number;
 };
 
+
 export type MonthRecord = {
   monthISO: string; // YYYY-MM
+  deadlineISO?: string; // optional explicit deadline date
   outcomes: Task[]; // required outcomes
   status: "open" | "passed" | "failed";
   failReason?: string;
   closedAt?: number;
 };
+
 
 export type Goal = {
   id: string;
