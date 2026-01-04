@@ -10,8 +10,10 @@ const links = [
   { href: "/monthly", label: "Monthly" },
   { href: "/goals", label: "2026 Goals" },
   { href: "/calendar", label: "Calendar" },
+  { href: "/timer", label: "Timer" },
   { href: "/settings", label: "Settings" }
 ];
+
 
 export function Sidebar() {
   const path = usePathname();
