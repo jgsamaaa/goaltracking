@@ -60,13 +60,21 @@ export default function TimerPage() {
   }, [customMinutes, focusMin, shortMin, longMin, cycleEvery]);
 
   /* Timer tick */
-  useEffect(() => {
-    if (!isRunning) return;
-    intervalRef.current = window.setInterval(() => {
-      setTotalSeconds((s) => (s <= 1 ? 0 : s - 1));
-    }, 1000);
-    return () => intervalRef.current && clearInterval(intervalRef.current);
-  }, [isRunning]);
+useEffect(() => {
+  if (!isRunning) return;
+
+  const id = window.setInterval(() => {
+    setTotalSeconds((s) => (s <= 1 ? 0 : s - 1));
+  }, 1000);
+
+  intervalRef.current = id;
+
+  return () => {
+    window.clearInterval(id);
+    intervalRef.current = null;
+  };
+}, [isRunning]);
+
 
   /* Pomodoro auto-advance */
   useEffect(() => {
